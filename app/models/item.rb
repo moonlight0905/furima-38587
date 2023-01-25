@@ -12,9 +12,9 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  with_options presence: true, format: { with: /\A[0-9]+\z/} do
-    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999,
-                                      message: 'は¥300 ~ ¥9,999,999の半角数値で入力してください' } 
+  with_options presence: true, format: { with: /\A[0-9]+\z/ } do
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+                                      message: 'は¥300 ~ ¥9,999,999の半角数値で入力してください' }
   end
 
   validates :category_id,       presence: true
@@ -24,5 +24,4 @@ class Item < ApplicationRecord
   validates :days_to_ship_id,   presence: true
 
   belongs_to :user
-
 end

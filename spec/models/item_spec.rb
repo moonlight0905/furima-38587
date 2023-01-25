@@ -16,7 +16,7 @@ RSpec.describe Item, type: :model do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
-      end 
+      end
       it 'item_nameが空では登録できない' do
         @item.item_name = ''
         @item.valid?
@@ -60,17 +60,17 @@ RSpec.describe Item, type: :model do
       it 'priceが300円未満では登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は¥300 ~ ¥9,999,999の半角数値で入力してください")
+        expect(@item.errors.full_messages).to include('Price は¥300 ~ ¥9,999,999の半角数値で入力してください')
       end
       it 'priceが9,999,999円より高ければ登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は¥300 ~ ¥9,999,999の半角数値で入力してください")
+        expect(@item.errors.full_messages).to include('Price は¥300 ~ ¥9,999,999の半角数値で入力してください')
       end
       it 'priceが半角数値でなければ登録できない' do
         @item.price = '五百円'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は¥300 ~ ¥9,999,999の半角数値で入力してください")
+        expect(@item.errors.full_messages).to include('Price は¥300 ~ ¥9,999,999の半角数値で入力してください')
       end
       it 'ユーザーが紐付いていなければ登録できない' do
         @item.user = nil
@@ -78,5 +78,5 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('User must exist')
       end
     end
-  end    
+  end
 end
