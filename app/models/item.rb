@@ -17,11 +17,9 @@ class Item < ApplicationRecord
                                       message: 'は¥300 ~ ¥9,999,999の半角数値で入力してください' }
   end
 
-  validates :category_id,       presence: true
-  validates :condition_id,      presence: true
-  validates :shipping_cost_id,  presence: true
-  validates :prefecture_id,     presence: true
-  validates :days_to_ship_id,   presence: true
+  with_options presence: true, format: { without: /\A[0]\z/ } do
+    validates :category_id, :condition_id, :shipping_cost_id, :prefecture_id, :days_to_ship_id
+  end
 
   belongs_to :user
 end
