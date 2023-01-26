@@ -1,0 +1,25 @@
+class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :shipping_cost
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :days_to_ship
+
+  validates :item_name,         presence: true
+  validates :text,              presence: true
+  validates :image,             presence: true
+
+  has_one_attached :image
+
+  with_options presence: true, format: { with: /\A[0-9]+\z/ } do
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+                                      message: 'は¥300 ~ ¥9,999,999の半角数値で入力してください' }
+  end
+
+  with_options presence: true, format: { without: /\A0\z/ } do
+    validates :category_id, :condition_id, :shipping_cost_id, :prefecture_id, :days_to_ship_id
+  end
+
+  belongs_to :user
+end
