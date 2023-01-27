@@ -1,0 +1,279 @@
+<%= render "shared/header" %>
+
+<%# 商品の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @item.item_name %>
+    </h2>
+    <div class="item-img-content">
+      <%= image_tag @item.image, class:"item-box-img" %>
+      <%# 商品が売れている場合は、sold outを表示しましょう %>
+      <%#<div class="sold-out">
+        <span>Sold Out!!</span>
+      </div> %>
+      <%# //商品が売れている場合は、sold outを表示しましょう %>
+    </div>
+    <div class="item-price-box">
+      <span class="item-price">
+        <%= @item.price %>
+      </span>
+      <span class="item-postage">
+        <% if @item.shipping_cost_id == 1 %><p>着払い(購入者負担)</p>
+        <% else %><p>送料込み(出品者負担)</p>
+        <% end %>
+      </span>
+    </div>
+
+    <% if user_signed_in? && current_user == @item.user %>
+    <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+    <p class="or-text">or</p>
+    <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
+    <% elsif user_signed_in? %>
+    <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+    <% else %>
+    <% end %>
+
+    <div class="item-explain-box">
+      <span><%= @item.text %></span>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">出品者</th>
+          <td class="detail-value"><%= @item.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">カテゴリー</th>
+          <td class="detail-value">
+          <% case @item.category_id 
+             when 1 %>
+             <p>メンズ</p>
+          <% when 2 %>
+             <p>レディース</p>
+          <% when 3 %>
+             <p>ベビー・キッズ</p>
+          <% when 4 %>
+             <p>インテリア・住まい・小物</p>
+          <% when 5 %>
+             <p>本・音楽・ゲーム</p>
+          <% when 6 %>
+             <p>おもちゃ・ホビー・グッズ</p>
+          <% when 7 %>
+             <p>家電・スマホ・カメラ</p>
+          <% when 8 %>
+             <p>スポーツ・レジャー</p>
+          <% when 9 %>
+             <p>ハンドメイド</p>
+          <% else 10 %>
+             <p>その他</p>
+          <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="detail-item">商品の状態</th>
+          <td class="detail-value">
+          <% case @item.condition_id
+             when 1 %>
+             <p>新品・未使用</p>
+          <% when 2 %>
+             <p>未使用に近い</p>
+          <% when 3 %>
+             <p>目立った傷や汚れなし</p>
+          <% when 4 %>
+             <p>やや傷や汚れあり</p>
+          <% when 5 %>
+             <p>傷や汚れあり</p>
+          <% else 6 %>
+             <p>全体的に状態が悪い</p>
+          <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="detail-item">配送料の負担</th>
+          <td class="detail-value">
+          <% case @item.shipping_cost_id
+             when 1 %>
+             <p>着払い(購入者負担)</p>
+          <% else 2 %>
+             <p>送料込み(出品者負担)</p>
+          <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="detail-item">発送元の地域</th>
+          <td class="detail-value">
+          <% case  @item.prefecture_id
+             when 1 %>
+             <p>北海道</p>
+          <% when 2 %>
+             <p>青森県</p>
+          <% when 3 %>
+             <p>岩手県</p>
+          <% when 4 %>
+             <p>宮城県</p>
+          <% when 5 %>
+             <p>秋田県</p>
+          <% when 6 %>
+             <p>山形県</p>
+          <% when 7 %>
+             <p>福島県</p>
+          <% when 8 %>
+             <p>茨城県</p>
+          <% when 9 %>
+             <p>栃木県</p>
+          <% when 10 %>
+             <p>群馬県</p> 
+          <% when 11 %>
+             <p>埼玉県</p>
+          <% when 12 %>
+             <p>千葉県</p>
+          <% when 13 %>
+             <p>東京都</p>
+          <% when 14 %>
+             <p>神奈川県</p>
+          <% when 15 %>
+             <p>新潟県</p>
+          <% when 16 %>
+             <p>富山県</p>
+          <% when 17 %>
+             <p>石川県</p>
+          <% when 18 %>
+             <p>福井県</p>
+          <% when 19 %>
+             <p>山梨県</p>
+          <% when 20 %>
+             <p>長野県</p>
+          <% when 21 %>
+             <p>岐阜県</p>
+          <% when 22 %>
+             <p>静岡県</p>
+          <% when 23 %>
+             <p>愛知県</p>
+          <% when 24 %>
+             <p>三重県</p>
+          <% when 25 %>
+             <p>滋賀県</p>
+          <% when 26 %>
+             <p>京都府</p>
+          <% when 27 %>
+             <p>大阪府</p>
+          <% when 28 %>
+             <p>兵庫県</p>
+          <% when 29 %>
+             <p>奈良県</p>
+          <% when 30 %>
+             <p>和歌山県</p>
+          <% when 31 %>
+             <p>鳥取県</p>
+          <% when 32 %>
+             <p>島根県</p>
+          <% when 33 %>
+             <p>岡山県</p>
+          <% when 34 %>
+             <p>広島県</p>
+          <% when 35 %>
+             <p>山口県</p>
+          <% when 36 %>
+             <p>徳島県</p>
+          <% when 37 %>
+             <p>香川県</p>
+          <% when 38 %>
+             <p>愛媛県</p>
+          <% when 39 %>
+             <p>高知県</p>
+          <% when 40 %>
+             <p>福岡県</p>   
+          <% when 41 %>
+             <p>佐賀県</p>
+          <% when 42 %>
+             <p>長崎県</p>
+          <% when 43 %>
+             <p>熊本県</p>
+          <% when 44 %>
+             <p>大分県</p>
+          <% when 45 %>
+             <p>宮崎県</p>
+          <% when 46 %>
+             <p>鹿児島県</p>
+          <% else 47 %>
+             <p>沖縄県</p>
+          <% end %>         
+          </td>
+        </tr>
+        <tr>    
+          <th class="detail-item">発送日の目安</th>
+          <td class="detail-value">
+          <% case @item.days_to_ship_id
+             when 1 %>
+             <p>1~2日で発送</p>
+          <% when 2 %>
+             <p>2~3日で発送</p>
+          <% else 3 %>
+             <p>4~7日で発送</p>
+          <% end %>   
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="option">
+      <div class="favorite-btn">
+        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+      <div class="report-btn">
+        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <span>不適切な商品の通報</span>
+      </div>
+    </div>
+  </div>
+  <%# /商品の概要 %>
+
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <a href="#" class="change-item-btn">
+      ＜ 前の商品
+    </a>
+    <a href="#" class="change-item-btn">
+      後ろの商品 ＞
+    </a>
+  </div>
+  <a href="#" class="another-item">
+  <% case @item.category_id 
+     when 1 %>
+     <p>メンズ</p>
+  <% when 2 %>
+     <p>レディース</p>
+  <% when 3 %>
+     <p>ベビー・キッズ</p>
+  <% when 4 %>
+     <p>インテリア・住まい・小物</p>
+  <% when 5 %>
+     <p>本・音楽・ゲーム</p>
+  <% when 6 %>
+     <p>おもちゃ・ホビー・グッズ</p>
+  <% when 7 %>
+     <p>家電・スマホ・カメラ</p>
+  <% when 8 %>
+     <p>スポーツ・レジャー</p>
+  <% when 9 %>
+     <p>ハンドメイド</p>
+  <% else 10 %>
+     <p>その他</p>
+  <% end %>をもっと見る</a>
+</div>
+
+<%= render "shared/footer" %>
