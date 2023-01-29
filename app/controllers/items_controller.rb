@@ -29,14 +29,13 @@ class ItemsController < ApplicationController
   def update
     @item.update(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to item_path(@item.id)
     else
       render 'edit'
     end
   end
 
   def correct_item
-    set_item
     return if @item.user == current_user
 
     redirect_to root_path
