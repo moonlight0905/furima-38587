@@ -1,6 +1,7 @@
 class ShippingCost < ActiveHash::Base
   include ActiveHash::Associations
   has_many :items
+  has_many :purchases
 
   self.data = [
     { id: 0, name: '---' },
