@@ -110,6 +110,10 @@
   display: flex;
   text-align: center;
   line-height: 55px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 10px 16px 8px;
+  height: 48px;
 }
 
 .input-expiration-date {
@@ -117,8 +121,6 @@
   margin-top: 5px;
   height: 48px;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
   font-size: 16px;
   resize: none;
   line-height: 45px;
