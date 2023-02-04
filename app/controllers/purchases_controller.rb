@@ -1,11 +1,12 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create] 
   before_action :set_item, only: [:index, :create]
-  before_action :correct_item, only: [:index, :create]
 
 
   def index
     if @item.user == current_user
+      redirect_to root_path
+    elsif @item.purchase
       redirect_to root_path
     end
     @purchase_destination = PurchaseDestination.new
@@ -19,12 +20,6 @@ class PurchasesController < ApplicationController
     else
       render :index
     end 
-  end
-
-  def correct_item
-    return if @item.user == current_user
-
-    redirect_to new_user_session_path
   end
 
 
