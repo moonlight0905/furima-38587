@@ -4,7 +4,7 @@ RSpec.describe PurchaseDestination, type: :model do
   describe '発送先情報の保存' do
     before do
       user = FactoryBot.create(:user)
-      item = FactoryBot.build(:item)
+      item = FactoryBot.create(:item)
       @purchase_destination = FactoryBot.build(:purchase_destination, user_id: user.id, item_id: item.id)
     end
 
@@ -53,7 +53,17 @@ RSpec.describe PurchaseDestination, type: :model do
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Phone can't be blank")
       end
-      it 'phoneが10桁以上11桁以内の半角数値でなければ保存できないこと' do
+      it 'phoneが9桁以下では保存できないこと' do
+        @purchase_destination.phone = '090123456'
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include('Phone は10ケタか11ケタの半角数値で入力してください')
+      end
+      it 'phoneが12桁以上では保存できないこと' do
+        @purchase_destination.phone = '090123456789'
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include('Phone は10ケタか11ケタの半角数値で入力してください')
+      end
+      it 'phoneに半角数字以外が含まれている場合は保存できないこと' do
         @purchase_destination.phone = '090-1234-5678'
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include('Phone は10ケタか11ケタの半角数値で入力してください')
