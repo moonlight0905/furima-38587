@@ -40,9 +40,9 @@ class ItemsController < ApplicationController
   end
 
   def correct_item
-    if !(user_signed_in? && @item.user == current_user) || @item.purchase
+    return unless !(user_signed_in? && @item.user == current_user) || @item.purchase
+
     redirect_to root_path
-    end
   end
 
   private
