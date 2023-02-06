@@ -1,7 +1,6 @@
 class PurchaseDestination
-
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :locality, :address, :building_name, :phone, :purchase_id
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :locality, :address, :building_name, :phone, :token
 
   with_options presence: true do
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
@@ -10,6 +9,8 @@ class PurchaseDestination
     validates :address
     validates :phone,format: {with: /\A\d{10,11}\z/, message: "は10ケタか11ケタの半角数値で入力してください"}
     validates :user_id
+    validates :item_id
+    validates :token
   end
 
   def save
