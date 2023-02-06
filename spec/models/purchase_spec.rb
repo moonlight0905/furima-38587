@@ -15,12 +15,12 @@ RSpec.describe Purchase, type: :model do
       it 'userが紐づいていないと保存できないこと' do
         @purchase.user = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("User must exist")
+        expect(@purchase.errors.full_messages).to include('User must exist')
       end
       it 'itemが紐づいていないと保存できないこと' do
         @purchase.item = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Item must exist")
+        expect(@purchase.errors.full_messages).to include('Item must exist')
       end
     end
   end

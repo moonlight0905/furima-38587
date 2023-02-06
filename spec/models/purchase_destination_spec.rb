@@ -56,13 +56,13 @@ RSpec.describe PurchaseDestination, type: :model do
       it 'phoneが10桁以上11桁以内の半角数値でなければ保存できないこと' do
         @purchase_destination.phone = '090-1234-5678'
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("Phone は10ケタか11ケタの半角数値で入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('Phone は10ケタか11ケタの半角数値で入力してください')
       end
       it 'tokenが空では保存できないこと' do
         @purchase_destination.token = nil
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Token can't be blank")
       end
-     end
-   end
+    end
+  end
 end

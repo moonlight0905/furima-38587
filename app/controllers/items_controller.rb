@@ -24,9 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if user_signed_in? && @item.user == current_user && @item.purchase
-      redirect_to root_path
-    end
+    return unless user_signed_in? && @item.user == current_user && @item.purchase
+
+    redirect_to root_path
   end
 
   def update
@@ -42,9 +42,9 @@ class ItemsController < ApplicationController
       @item.destroy
       redirect_to root_path
     end
-    if user_signed_in? && @item.purchase
-      redirect_to root_path
-    end
+    return unless user_signed_in? && @item.purchase
+
+    redirect_to root_path
   end
 
   def correct_item
