@@ -9,7 +9,7 @@ RSpec.describe PurchaseDestination, type: :model do
     end
 
     context '内容に問題ない場合' do
-      it 'postal_code, prefecture_id, locality, address, building_name, phone, purchase_idが存在すれば登録できる' do
+      it 'postal_code, prefecture_id, locality, address, building_name, phone, purchase_id,tokenが存在すれば登録できる' do
         expect(@purchase_destination).to be_valid
       end
       it 'building_nameは空でも保存できること' do
@@ -57,6 +57,11 @@ RSpec.describe PurchaseDestination, type: :model do
         @purchase_destination.phone = '090-1234-5678'
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Phone は10ケタか11ケタの半角数値で入力してください")
+      end
+      it 'tokenが空では保存できないこと' do
+        @purchase_destination.token = nil
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include("Token can't be blank")
       end
      end
    end
