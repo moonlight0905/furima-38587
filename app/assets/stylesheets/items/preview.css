@@ -1,0 +1,8 @@
+#previews {
+  display: flex;
+}
+
+.preview-image {
+  height: 100px;
+  width: auto;
+}
