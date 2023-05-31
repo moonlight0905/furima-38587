@@ -94,7 +94,8 @@
 }
 
 .other-image {
-  margin-right: 10px;
+  height: 200px;
+  width: 200px;
 }
 
 .image-delete-button {
