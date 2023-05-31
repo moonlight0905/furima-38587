@@ -39,12 +39,11 @@ document.addEventListener('DOMContentLoaded', function(){
   const buildNewFileField = () => {
     // 2枚目用のfile_fieldを作成
     const newFileField = document.createElement('input');
-    newFileField.setAttribute('id', 'item_images');
     newFileField.setAttribute('type', 'file');
-    newFileField.setAttribute('name', 'post[images][]');
+    newFileField.setAttribute('name', 'item[images][]');
 
     // 最後のfile_fieldを取得
-    const lastFileField = document.querySelector('input[id="item_images"][type="file"][name="post[images][]"]:last-child');
+    const lastFileField = document.querySelector('input[type="file"][name="item[images][]"]:last-child');
     // nextDataIndex = 最後のfile_fieldのdata-index + 1
     const nextDataIndex = Number(lastFileField.getAttribute('data-index')) +1;
     newFileField.setAttribute('data-index', nextDataIndex);
@@ -71,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // input要素で値の変化が起きた際に呼び出される関数の中身
   const changedFileField = (e) => {
+  
     // data-index（何番目を操作しているか）を取得
     const dataIndex = e.target.getAttribute('data-index');
 
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function(){
   };
 
   // input要素を取得
-  const fileField = document.querySelector('input[id="item_images"][type="file"][name="post[images][]"]');
+  const fileField = document.querySelector('input[id="item_images"][type="file"][name="item[images][]"]');
 
   // input要素で値の変化が起きた際に呼び出される関数
   fileField.addEventListener('change', changedFileField);
