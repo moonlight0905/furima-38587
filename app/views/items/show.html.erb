@@ -15,8 +15,7 @@
       <% end %>
      <div class="other-images">
       <% @item.images[1..-1].each do |image| %>
-       <div class="other-image">
-        <%= image_tag image %>
+        <%= image_tag image, class: "other-image" %><br>
          <% if @item.purchase %>
          <div class="sold-out">
           <span>Sold Out!!</span>
