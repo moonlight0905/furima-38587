@@ -1,30 +1,30 @@
 ja:
-    activerecord:
-          attributes:
-              user:
-                  Nickname: ニックネーム         
-                  Family name: 苗字
-                  Family name kana: 苗字のフリガナ
-                  First name: 名前
-                  First name kana: 名前のフリガナ
-                  Birthday: 誕生日
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        family_name: 苗字
+        family_name_kana: 苗字のフリガナ
+        first_name: 名前
+        first_name_kana: 名前のフリガナ
+        birthday: 誕生日
+      item:
+        item_name: 商品名
+        images: 画像
+        text: 商品の説明
+        price: 価格
+        category_id: カテゴリー
+        condition_id: 商品の状態
+        shipping_cost_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        days_to_ship_id: 発送までの日数
 
-              item:
-                  Item name: 商品名
-                  Images: 画像
-                  Text: 商品の説明
-                  Price: 価格
-                  Category: カテゴリー
-                  Condition: 商品の状態
-                  Shipping cost: 配送料の負担
-                  Prefecture: 発送元の地域
-                  Days to ship: 発送までの日数
-
-    activemodel:
-          attributes:      
-              purchase_destination:
-                  Postal code: 郵便番号
-                  Prefecture: 都道府県
-                  Locality: 市区町村
-                  Address: 番地
-                  Phone: 電話番号
+  activemodel:
+    attributes:
+      purchase_destination:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        locality: 市区町村
+        address: 番地
+        phone: 電話番号
+        token: カード情報
