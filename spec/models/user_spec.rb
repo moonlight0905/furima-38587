@@ -78,12 +78,12 @@ RSpec.describe User, type: :model do
       it 'family_name_kanaが空では登録できない' do
         @user.family_name_kana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("苗字のふりがなを入力してください")
+        expect(@user.errors.full_messages).to include("苗字のフリガナを入力してください")
       end
       it 'first_name_kanaが空では登録できない' do
         @user.first_name_kana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("名前のふりがなを入力してください")
+        expect(@user.errors.full_messages).to include("名前のフリガナを入力してください")
       end
       it 'family_nameが全角（漢字、ひらがな、カタカナ）でなければ登録できない' do
         @user.family_name = 'test'
@@ -98,12 +98,12 @@ RSpec.describe User, type: :model do
       it 'family_name_kanaが全角（カタカナ）でなければ登録できない' do
         @user.family_name_kana = 'test'
         @user.valid?
-        expect(@user.errors.full_messages).to include('苗字のふりがなは全角カタカナを使用してください')
+        expect(@user.errors.full_messages).to include('苗字のフリガナは全角カタカナを使用してください')
       end
       it 'first_name_kanaが全角（カタカナ）でなければ登録できない' do
         @user.first_name_kana = 'test'
         @user.valid?
-        expect(@user.errors.full_messages).to include('名前のふりがなは全角カタカナを使用してください')
+        expect(@user.errors.full_messages).to include('名前のフリガナは全角カタカナを使用してください')
       end
       it 'birthdayが空では登録できない' do
         @user.birthday = ''
