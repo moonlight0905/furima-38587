@@ -1,29 +1,51 @@
 <%= render "shared/second-header"%>
 
-<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: user_path, class: 'registration-main', local: true do |f| %>
 
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
-      会員情報入力
+      会員情報確認
     </h1>
   </div>
 
-  <%= render 'shared/error_messages', model: f.object %>
+  <%# カード情報の表示 %>
+    <div class='item-payment'>
+      <h1 class='item-payment-title'>
+        カード情報
+      </h1>
+      <p class="card-info">
+          【カード番号】
+           <br>
+           <%= "**** **** **** " + @card[:last4] %>
+           <%# カード番号の下4桁を取得 %>
+           <br>
+          【有効期限】
+           <br>
+           <%= @card[:exp_month] %>
+           <%# 有効期限の「月」を取得 %>
+           /
+           <%= @card[:exp_year] %>
+           <%# 有効期限の「年」を取得 %>
+      </p>
+    </div>
+    <%# /カード情報の表示 %>
+
+  <%= render 'shared/error_messages', model: @user %>
 
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">ニックネーム</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎",autofocus:"autofocus", maxlength:"40" %>
+    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可" %>
+    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -88,18 +110,13 @@
     </div>
     <p class='info-text'>※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。</p>
   </div>
-  <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「会員登録」のボタンを押すことにより、
-      <span>利用規約</span>
-      <br>に同意したものとみなします
-    </h2>
-  </div>
+  
   <div class='register-btn'>
-    <%= f.submit "会員登録" ,class:"register-red-btn" %>
+    <%= f.submit "更新する" ,class:"register-red-btn" %>
   </div>
   <p class='register-info'>本人情報の登録について</p>
 </div>
 <% end %>
 
 <%= render "shared/second-footer"%>
+

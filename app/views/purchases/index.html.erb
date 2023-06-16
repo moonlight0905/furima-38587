@@ -30,11 +30,9 @@
       </p>
     </div>
     <%# /支払額の表示 %>
-      <%= form_with  model: @purchase_destination, url: item_purchases_path, id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
-      <%= render 'shared/error_messages', model: @purchase_destination %>
-
+      
     <%# カード情報の入力 %>
-    <div class='credit-card-form'>
+    <%#<div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
       </h1>
@@ -46,10 +44,10 @@
         <div id="card-number" class="input-default"  placeholder="カード番号(半角英数字)"  maxlength="16"></div>
         <div class='available-card'>
           <%= image_tag 'card-visa.gif', class: 'card-logo'%>
-          <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
-          <%= image_tag 'card-jcb.gif', class: 'card-logo'%>
-          <%= image_tag 'card-amex.gif', class: 'card-logo'%>
-        </div>
+       <%#<%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
+       <%#<%= image_tag 'card-jcb.gif', class: 'card-logo'%>
+       <%#<%= image_tag 'card-amex.gif', class: 'card-logo'%>
+      <%#</div>
       </div>   
       <div class="form-group">
         <div class='form-text-wrap'>
@@ -67,6 +65,9 @@
       </div>
     </div>
     <%# /カード情報の入力 %>
+
+    <%= form_with  model: @purchase_destination, url: item_purchases_path, id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
+      <%= render 'shared/error_messages', model: @purchase_destination %>
     
     <%# 配送先の入力 %>
     <div class='shipping-address-form'>
@@ -117,6 +118,7 @@
       </div>
     </div>
     <%# /配送先の入力 %>
+
     <div class='buy-btn'>
       <%= f.submit "購入" ,class:"buy-red-btn", id:"button" %>
     </div>
