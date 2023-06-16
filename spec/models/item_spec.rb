@@ -15,42 +15,42 @@ RSpec.describe Item, type: :model do
       it 'imagesが空では登録できない' do
         @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("画像を入力してください")
+        expect(@item.errors.full_messages).to include('画像を入力してください')
       end
       it 'item_nameが空では登録できない' do
         @item.item_name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("商品名を入力してください")
+        expect(@item.errors.full_messages).to include('商品名を入力してください')
       end
       it 'textが空では登録できない' do
         @item.text = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("商品の説明を入力してください")
+        expect(@item.errors.full_messages).to include('商品の説明を入力してください')
       end
       it 'category_idが空では登録できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("カテゴリーを入力してください")
+        expect(@item.errors.full_messages).to include('カテゴリーを入力してください')
       end
       it 'condition_idが空では登録できない' do
         @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("商品の状態を入力してください")
+        expect(@item.errors.full_messages).to include('商品の状態を入力してください')
       end
       it 'shipping_cost_idが空では登録できない' do
         @item.shipping_cost_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("配送料の負担を入力してください")
+        expect(@item.errors.full_messages).to include('配送料の負担を入力してください')
       end
       it 'prefecture_idが空では登録できない' do
         @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("発送元の地域を入力してください")
+        expect(@item.errors.full_messages).to include('発送元の地域を入力してください')
       end
       it 'days_to_ship_idが空では登録できない' do
         @item.days_to_ship_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("発送までの日数を入力してください")
+        expect(@item.errors.full_messages).to include('発送までの日数を入力してください')
       end
       it 'category_idに「---」が選択されている場合は出品できない' do
         @item.category_id = 0
@@ -80,7 +80,7 @@ RSpec.describe Item, type: :model do
       it 'priceが空では登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("価格を入力してください")
+        expect(@item.errors.full_messages).to include('価格を入力してください')
       end
       it 'priceが300円未満では登録できない' do
         @item.price = 299

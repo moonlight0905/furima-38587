@@ -21,7 +21,7 @@ RSpec.describe PurchaseDestination, type: :model do
       it 'postal_codeが空では保存できないこと' do
         @purchase_destination.postal_code = ''
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("郵便番号を入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('郵便番号を入力してください')
       end
       it 'postal_codeが「3桁ハイフン4桁」の半角文字列でなければ保存できないこと' do
         @purchase_destination.postal_code = '1234567'
@@ -31,27 +31,27 @@ RSpec.describe PurchaseDestination, type: :model do
       it 'prefecture_idが空では保存できないこと' do
         @purchase_destination.prefecture_id = ''
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("都道府県を入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('都道府県を入力してください')
       end
       it 'prefecture_idに「---」が選択されている場合は保存できないこと' do
         @purchase_destination.prefecture_id = 0
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("都道府県を入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('都道府県を入力してください')
       end
       it 'localityが空だと保存できないこと' do
         @purchase_destination.locality = ''
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("市区町村を入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('市区町村を入力してください')
       end
       it 'addressが空だと保存できないこと' do
         @purchase_destination.address = ''
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("番地を入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('番地を入力してください')
       end
       it 'phoneが空だと保存できないこと' do
         @purchase_destination.phone = ''
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("電話番号を入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('電話番号を入力してください')
       end
       it 'phoneが9桁以下では保存できないこと' do
         @purchase_destination.phone = '090123456'
@@ -71,7 +71,7 @@ RSpec.describe PurchaseDestination, type: :model do
       it 'tokenが空では保存できないこと' do
         @purchase_destination.token = nil
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("カード情報を入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('カード情報を入力してください')
       end
     end
   end
