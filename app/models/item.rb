@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_cost
   belongs_to_active_hash :prefecture
@@ -18,9 +17,10 @@ class Item < ApplicationRecord
   end
 
   with_options presence: true, format: { without: /\A0\z/ } do
-    validates :category_id, :condition_id, :shipping_cost_id, :prefecture_id, :days_to_ship_id
+    validates :condition_id, :shipping_cost_id, :prefecture_id, :days_to_ship_id
   end
 
   belongs_to :user
   has_one    :purchase
+  belongs_to :category
 end
