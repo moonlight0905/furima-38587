@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_19_114733) do
+ActiveRecord::Schema.define(version: 2023_06_14_125044) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,13 +41,6 @@ ActiveRecord::Schema.define(version: 2023_06_19_114733) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "ancestry"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
     t.integer "prefecture_id", null: false
@@ -65,8 +58,8 @@ ActiveRecord::Schema.define(version: 2023_06_19_114733) do
     t.string "item_name", null: false
     t.text "text", null: false
     t.integer "price", null: false
-    t.integer "condition_id", null: false
     t.integer "category_id", null: false
+    t.integer "condition_id", null: false
     t.integer "shipping_cost_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "days_to_ship_id", null: false
